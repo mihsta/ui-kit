@@ -1,6 +1,24 @@
 {
   "name": "@your-scope/ui-kit",
   "version": "0.1.4",
+  "description": "React UI component library built with TypeScript and Tailwind CSS",
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "tailwind",
+    "typescript",
+    "design-system"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mihsta/ui-kit.git"
+  },
+  "homepage": "https://github.com/mihsta/ui-kit#readme",
+  "bugs": {
+    "url": "https://github.com/mihsta/ui-kit/issues"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
