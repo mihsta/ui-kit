@@ -2,6 +2,34 @@
 
 This project uses Changesets to prepare releases and a manual final publish step to npm.
 
+## Package installation
+
+### From npm (after publish)
+
+```bash
+npm install @your-scope/ui-kit react react-dom tailwindcss
+```
+
+### From GitHub Release tarball
+
+Download the `.tgz` asset from the [Releases](https://github.com/OWNER/REPO/releases) page, then:
+
+```bash
+npm install ./path/to/your-scope-ui-kit-0.1.2.tgz react react-dom tailwindcss
+```
+
+Or install directly from a release URL (replace `v0.1.2` and `OWNER/REPO` with actual values):
+
+```bash
+npm install https://github.com/OWNER/REPO/releases/download/v0.1.2/your-scope-ui-kit-0.1.2.tgz react react-dom tailwindcss
+```
+
+### Peer dependencies
+
+The package requires `react`, `react-dom`, and `tailwindcss` as peer dependencies—install them in your project.
+
+---
+
 ## One-time setup
 
 - Set the real package name in `package.json` instead of `@your-scope/ui-kit`.
