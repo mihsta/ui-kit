@@ -1,5 +1,11 @@
 # @your-scope/ui-kit
 
+## 0.1.4
+
+### Patch Changes
+
+- Add installation instructions to each GitHub Release (npm, tarball URL, peer deps)
+
 ## 0.1.3
 
 ### Patch Changes

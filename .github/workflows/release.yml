@@ -79,6 +79,16 @@ jobs:
           PACKAGE_FILE="$(npm pack | tail -n 1)"
           echo "PACKAGE_FILE=${PACKAGE_FILE}" >> "$GITHUB_ENV"
 
+      - name: Create release notes
+        env:
+          REPO: ${{ github.repository }}
+        run: |
+          VERSION="$(node -p "JSON.parse(require('fs').readFileSync('package.json', 'utf8')).version")"
+          TARBALL="${PACKAGE_FILE}"
+          sed -e "s|\$VERSION|${VERSION}|g" -e "s|\$TARBALL|${TARBALL}|g" -e "s|\$REPO|${REPO}|g" \
+            .github/RELEASE_NOTES_TEMPLATE.md > release-notes.md
+          sed -n "/^## ${VERSION}$/,/^## /p" CHANGELOG.md | sed '$d' >> release-notes.md
+
       - name: Create GitHub release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -92,7 +102,7 @@ jobs:
           gh release create "$TAG" \
             --target "$GITHUB_SHA" \
             --title "$TAG" \
-            --generate-notes \
+            --notes-file release-notes.md \
             "$PACKAGE_FILE"
 
   publish-to-npm:
