@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import { cn } from '../../utils/cn'
 
@@ -21,7 +21,7 @@ export function Tooltip({
   const [style, setStyle] = useState<React.CSSProperties>({})
   const triggerRef = useRef<HTMLDivElement>(null)
 
-  const updatePosition = () => {
+  const updatePosition = useCallback(() => {
     if (triggerRef.current) {
       const rect = triggerRef.current.getBoundingClientRect()
       const cx = rect.left + rect.width / 2
@@ -35,7 +35,7 @@ export function Tooltip({
       }
       setStyle(styles[position])
     }
-  }
+  }, [position])
 
   useEffect(() => {
     if (visible) {
@@ -47,7 +47,7 @@ export function Tooltip({
       window.removeEventListener('scroll', updatePosition, true)
       window.removeEventListener('resize', updatePosition)
     }
-  }, [visible, position])
+  }, [visible, updatePosition])
 
   return (
     <>

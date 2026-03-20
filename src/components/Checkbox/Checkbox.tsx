@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useRef } from 'react'
+import { forwardRef, useEffect, useId, useRef } from 'react'
 import { cn } from '../../utils/cn'
 
 export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
@@ -8,7 +8,8 @@ export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputE
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   ({ label, indeterminate, className, id, ...props }, ref) => {
-    const checkboxId = id ?? `checkbox-${Math.random().toString(36).slice(2)}`
+    const generatedId = useId()
+    const checkboxId = id ?? generatedId
     const inputRef = useRef<HTMLInputElement>(null)
 
     useEffect(() => {

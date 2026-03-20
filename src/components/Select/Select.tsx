@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useId } from 'react'
 import { cn } from '../../utils/cn'
 
 export interface SelectOption {
@@ -31,7 +31,8 @@ export function Select({
 }: SelectProps) {
     const [isOpen, setIsOpen] = useState(false)
     const containerRef = useRef<HTMLDivElement>(null)
-    const selectId = id ?? `select-${Math.random().toString(36).slice(2)}`
+    const generatedId = useId()
+    const selectId = id ?? generatedId
     const selectedOption = options.find((o) => o.value === value)
 
     useEffect(() => {
