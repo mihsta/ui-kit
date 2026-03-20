@@ -66,3 +66,7 @@ npm install
 npm run build
 npm run storybook
 ```
+
+## Releases
+
+Release flow is documented in `RELEASE.md` (Changesets + GitHub Actions publish pipeline).
