@@ -1,5 +1,11 @@
 # @your-scope/ui-kit
 
+## 0.1.2
+
+### Patch Changes
+
+- Attach npm package tarball to GitHub Release assets
+
 ## 0.1.1
 
 ### Patch Changes
